@@ -2,14 +2,26 @@
 
 function getPlaces($keyword, $postal) {
 
+    // Mapa básico CP → coordenadas (puedes ampliarlo luego)
+    $cpMap = [
+        "29600" => ["lat" => 36.510, "lon" => -4.885] // Marbella
+    ];
+
+    // Si el CP no existe, devolvemos vacío
+    if (!isset($cpMap[$postal])) {
+        return [];
+    }
+
+    $lat = $cpMap[$postal]["lat"];
+    $lon = $cpMap[$postal]["lon"];
+
+    // Query Overpass (negocios tipo "shop")
     $query = '
     [out:json];
 
-    area["postal_code"="' . $postal . '"]->.searchArea;
-
     (
-      node["shop"](area.searchArea);
-      way["shop"](area.searchArea);
+      node(around:3000,' . $lat . ',' . $lon . ')["shop"];
+      way(around:3000,' . $lat . ',' . $lon . ')["shop"];
     );
 
     out center;
@@ -17,7 +29,7 @@ function getPlaces($keyword, $postal) {
 
     $url = "https://overpass-api.de/api/interpreter?data=" . urlencode($query);
 
-    $response = file_get_contents($url);
+    $response = @file_get_contents($url);
 
     if (!$response) {
         return [];
@@ -26,6 +38,10 @@ function getPlaces($keyword, $postal) {
     $data = json_decode($response, true);
 
     $results = [];
+
+    if (!isset($data["elements"])) {
+        return [];
+    }
 
     foreach ($data["elements"] as $el) {
 
