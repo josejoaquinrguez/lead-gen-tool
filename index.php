@@ -1,22 +1,100 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lead Gen Tool</title>
-</head>
-<body>
+<?php
 
-<h1>Extractor de negocios</h1>
+require_once __DIR__ . '/services/places.php';
+require_once __DIR__ . '/services/analyzer.php';
 
-<form method="POST" action="api/search.php">
+$postalCode = $_GET['postal_code'] ?? '';
+$keyword = $_GET['keyword'] ?? '';
+$filter = $_GET['filter'] ?? 'all';
 
-    <input type="text" name="postal_code" placeholder="29600" required>
+$results = [];
+$error = '';
 
-    <input type="text" name="keyword" placeholder="Inmobiliarias" required>
+if ($postalCode !== '' && $keyword !== '') {
 
-    <button type="submit">Buscar</button>
+    try {
 
-</form>
+        $results = getPlaces($keyword, $postalCode);
 
-</body>
-</html>
+        foreach ($results as &$business) {
+
+            $website = trim($business['website'] ?? '');
+            $phone = trim($business['phone'] ?? '');
+            $instagram = trim($business['instagram'] ?? '');
+            $facebook = trim($business['facebook'] ?? '');
+
+            $score = 0;
+            $issues = [];
+
+            if ($website === '') {
+
+                $score += 40;
+
+                if ($instagram !== '' || $facebook !== '') {
+
+                    $issues[] = 'Solo tiene presencia en redes sociales';
+
+                } else {
+
+                    $issues[] = 'No tiene página web ni redes sociales visibles';
+                }
+            }
+
+            if ($phone === '') {
+                $score += 10;
+                $issues[] = 'No tiene teléfono visible';
+            }
+
+            if ($score >= 40) {
+
+                $level = 'Lead interesante';
+
+            } elseif ($score >= 10) {
+
+                $level = 'Mejorable';
+
+            } else {
+
+                $level = 'Correcto';
+            }
+
+            $business['analysis'] = [
+                'score' => $score,
+                'issues' => $issues,
+                'level' => $level,
+            ];
+        }
+
+        unset($business);
+
+        usort($results, function ($a, $b) {
+            return $b['analysis']['score'] <=> $a['analysis']['score'];
+        });
+
+        if ($filter !== 'all') {
+
+            $results = array_filter($results, function ($business) use ($filter) {
+
+                return match ($filter) {
+
+                    'lead' =>
+                        $business['analysis']['level'] === 'Lead interesante',
+
+                    'improvable' =>
+                        $business['analysis']['level'] === 'Mejorable',
+
+                    'correct' =>
+                        $business['analysis']['level'] === 'Correcto',
+
+                    default => true,
+                };
+            });
+        }
+
+    } catch (Throwable $e) {
+
+        $error = 'No se ha podido realizar la búsqueda.';
+    }
+}
+
+require __DIR__ . '/views/results.php';
