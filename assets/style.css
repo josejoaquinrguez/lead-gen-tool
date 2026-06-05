@@ -190,3 +190,72 @@ a {
     color: white;
     border-color: #2563eb;
 }
+
+body {
+    background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.08), transparent 35%),
+        #f4f6f8;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.business-card {
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.business-card:hover {
+    transform: translateY(-5px);
+    border-color: #bfdbfe;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.filters a {
+    transition: all 0.2s ease;
+}
+
+.filters a:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+input {
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.score {
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
