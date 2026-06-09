@@ -1,110 +1,147 @@
-# Lead Gen Tool - Extractor y Analizador de Negocios Locales
+# Lead Gen Tool
 
-Lead Gen Tool es una aplicacion web en PHP nativo para encontrar negocios locales por codigo postal y nicho, extraer datos publicos desde OpenStreetMap / Overpass API y priorizar oportunidades comerciales para auditorias digitales.
+### Plataforma SaaS de generación de leads locales y auditoría digital
 
-El objetivo no es solo listar negocios. La herramienta ayuda a detectar leads con carencias digitales: negocios sin web, webs caidas, webs poco optimizadas, falta de datos de contacto, ausencia de redes visibles o senales debiles de conversion.
+Lead Gen Tool es una aplicación web desarrollada en PHP nativo para encontrar negocios locales por código postal y nicho, extraer datos públicos desde OpenStreetMap / Overpass API y detectar oportunidades comerciales mediante análisis de presencia digital.
 
-## Caracteristicas
+La herramienta no solo lista negocios: identifica automáticamente webs mejorables, negocios sin presencia digital sólida y posibles clientes potenciales para auditorías web, SEO o servicios de marketing digital.
 
-- Busqueda de negocios por codigo postal y palabra clave.
-- Integracion con OpenStreetMap / Overpass API.
-- Extraccion de datos publicos: nombre, direccion, telefono, web, categoria y coordenadas.
-- Normalizacion de nichos comunes como restaurantes, hoteles, inmobiliarias, clinicas, estetica, supermercados y otros.
-- Analisis basico de presencia digital.
-- Scoring de oportunidad comercial de 0 a 100.
-- Filtros inteligentes por prioridad, web mejorable, sin web, web dudosa y web caida.
-- Validacion de coincidencia entre nombre del negocio y dominio para reducir falsos positivos.
-- Exportacion CSV compatible con Excel.
-- Cache local para evitar repetir consultas innecesarias.
-- Persistencia opcional en MySQL.
-- Entorno completo con Docker, MySQL y phpMyAdmin.
-- Dashboard responsive con modo claro y oscuro.
+---
 
-## Tecnologias Utilizadas
+![PHP](https://img.shields.io/badge/PHP-8.2-blue)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-Overpass-success)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![UI](https://img.shields.io/badge/UI-SaaS%20Dashboard-purple)
 
-- PHP nativo
-- MySQL
-- Docker
-- phpMyAdmin
-- HTML
-- CSS
-- JavaScript
-- OpenStreetMap
-- Overpass API
+---
 
-## Capturas
+# Características destacadas
 
-Puedes anadir capturas del proyecto en una carpeta `docs/screenshots/` y enlazarlas aqui:
+✅ Búsqueda de negocios por código postal y nicho
+✅ Integración con OpenStreetMap / Overpass API
+✅ Detección automática de webs mejorables
+✅ Validación de dominios para reducir falsos positivos
+✅ Dashboard SaaS responsive
+✅ Sistema de scoring comercial inteligente
+✅ Exportación CSV compatible con Excel
+✅ Docker + MySQL + phpMyAdmin
+✅ Cache local para optimización de consultas
+✅ Modo claro y oscuro
+✅ Análisis básico de presencia digital
+✅ Detección de WordPress, Elementor y WooCommerce
+✅ Filtros inteligentes por oportunidad comercial
+
+---
+
+# Demo visual
+
+## Dashboard oscuro
 
 ```md
 ![Dashboard oscuro](docs/screenshots/dashboard-dark.png)
+```
+
+## Dashboard claro
+
+```md
 ![Dashboard claro](docs/screenshots/dashboard-light.png)
 ```
 
-## Instalacion Local
+---
 
-Requisitos:
+# Tecnologías utilizadas
 
-- PHP 8.1 o superior
-- Extension cURL de PHP
-- Extension PDO MySQL si quieres guardar resultados en base de datos
-- Acceso a internet para consultar Overpass API y analizar webs publicas
+* PHP nativo
+* MySQL
+* Docker
+* phpMyAdmin
+* HTML5
+* CSS3
+* JavaScript
+* OpenStreetMap
+* Overpass API
 
-Pasos:
+---
+
+# Instalación local
+
+## Requisitos
+
+* PHP 8.1 o superior
+* Extensión cURL habilitada
+* Extensión PDO MySQL (opcional)
+* Acceso a internet
+
+## Pasos
 
 ```bash
 cp .env.example .env
 php -S 127.0.0.1:8000
 ```
 
-Despues abre:
+Abrir en navegador:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-Si no vas a usar MySQL en local, puedes configurar:
+Si no quieres usar MySQL:
 
 ```env
 DB_ENABLED=false
 ```
 
-## Instalacion con Docker
+---
 
-Requisitos:
+# Instalación con Docker
 
-- Docker
-- Docker Compose
+## Requisitos
 
-Pasos:
+* Docker
+* Docker Compose
+
+## Inicio rápido
 
 ```bash
 cp .env.example .env
 docker compose up -d
 ```
 
-Servicios disponibles:
+## Servicios disponibles
 
-- Aplicacion: `http://127.0.0.1:8000`
-- phpMyAdmin: `http://127.0.0.1:8081`
-- MySQL: servicio interno `mysql:3306`
+| Servicio   | URL                   |
+| ---------- | --------------------- |
+| Aplicación | http://127.0.0.1:8000 |
+| phpMyAdmin | http://127.0.0.1:8081 |
+| MySQL      | mysql:3306            |
 
-La base de datos se inicializa automaticamente con:
+La base de datos se inicializa automáticamente utilizando:
 
 ```text
 database/schema.sql
 ```
 
-Nota: si ya existe un volumen de MySQL creado anteriormente, Docker no volvera a importar el schema automaticamente. En ese caso, elimina el volumen solo si no necesitas sus datos.
+---
 
-## Configuracion
+# Configuración
 
-La configuracion sensible se gestiona mediante variables de entorno. El repositorio incluye `.env.example` como plantilla publica.
+Toda la configuración sensible se gestiona mediante variables de entorno.
 
-Variables principales:
+El repositorio incluye:
+
+```text
+.env.example
+```
+
+como plantilla pública segura.
+
+## Variables principales
 
 ```env
 APP_DOCKER=true
+
 DB_ENABLED=true
 DB_HOST=mysql
 DB_PORT=3306
@@ -112,142 +149,183 @@ DB_DATABASE=lead_gen_tool
 DB_USERNAME=root
 DB_PASSWORD=change_me_for_local_development
 DB_CHARSET=utf8mb4
+
 OVERPASS_API_URL=https://overpass-api.de/api/interpreter
+
 TAVILY_API_KEY=
 ```
 
-Archivos `.env`, `.env.local`, `.env.production` y variantes locales estan excluidos del repositorio.
+---
 
-## Estructura del Proyecto
+# Estructura del proyecto
 
 ```text
 .
 ├── api/                  # Endpoints auxiliares
 ├── assets/               # CSS y JavaScript del dashboard
-├── config/               # Configuracion de entorno y base de datos
+├── config/               # Configuración y entorno
 ├── database/             # Schema SQL inicial
-├── exports/              # Exportacion CSV
-├── services/             # Logica de busqueda, analisis y persistencia
-├── storage/              # Cache y debug local, no versionado
-├── views/                # Plantillas PHP de interfaz
+├── exports/              # Exportación CSV
+├── services/             # Lógica de negocio y análisis
+├── storage/              # Cache y debug local
+├── views/                # Plantillas PHP
 ├── Dockerfile
 ├── docker-compose.yml
 ├── index.php
 └── README.md
 ```
 
-## Como Funciona
+---
 
-Flujo principal:
+# Cómo funciona
+
+## Flujo principal
 
 ```text
-Codigo postal
-  -> coordenadas internas
-  -> consulta Overpass API
-  -> normalizacion de negocios
-  -> eliminacion de duplicados
-  -> validacion de web oficial
-  -> analisis de presencia digital
-  -> calculo de score
-  -> dashboard y exportacion CSV
+Código postal
+   ↓
+Conversión a coordenadas
+   ↓
+Consulta Overpass API
+   ↓
+Extracción de negocios
+   ↓
+Normalización y deduplicación
+   ↓
+Validación de dominios
+   ↓
+Análisis de presencia digital
+   ↓
+Cálculo de score comercial
+   ↓
+Dashboard y exportación CSV
 ```
 
-## Sistema de Puntuacion
+---
 
-Cada negocio recibe una puntuacion de oportunidad comercial de 0 a 100. Una puntuacion mas alta significa mayor potencial para ofrecer una auditoria digital.
+# Sistema de puntuación
 
-Factores que aumentan la oportunidad:
+Cada negocio recibe un score de oportunidad comercial de 0 a 100.
 
-- No tiene web.
-- La web no responde o devuelve errores.
-- La web no usa HTTPS.
-- Falta telefono, email o datos de contacto.
-- Direccion incompleta.
-- No hay Instagram, Facebook o WhatsApp visible.
-- No hay formulario de contacto.
-- No hay llamadas a la accion claras.
-- No hay favicon.
-- No hay meta viewport o responsive basico.
-- No hay meta description u Open Graph.
-- Dominio dudoso o poco relacionado con el nombre del negocio.
-- Deteccion de WordPress, Elementor o WooCommerce como posibles oportunidades de auditoria.
+Cuanto mayor es el score, mayor potencial tiene el negocio para ofrecer servicios de auditoría web o mejora digital.
 
-Niveles:
+## Factores analizados
 
-- Lead Alto: oportunidad prioritaria.
-- Lead Medio: oportunidad interesante.
-- Lead Bajo: presencia digital aceptable o menor urgencia.
+* Ausencia de web
+* Web caída o no responsive
+* Sin HTTPS
+* Falta de teléfono o email
+* Dirección incompleta
+* Sin redes sociales visibles
+* Sin formulario de contacto
+* Sin CTA clara
+* Sin favicon
+* Sin meta viewport
+* Sin meta description
+* Sin Open Graph
+* Dominio sospechoso o poco relacionado
+* Uso de WordPress / Elementor / WooCommerce
 
-## Exportacion CSV
+## Niveles
 
-La aplicacion permite exportar resultados con columnas como:
+| Nivel      | Descripción                 |
+| ---------- | --------------------------- |
+| Lead Alto  | Alta oportunidad comercial  |
+| Lead Medio | Oportunidad interesante     |
+| Lead Bajo  | Presencia digital aceptable |
 
-- Nombre
-- Categoria
-- Direccion
-- Telefono
-- Email
-- Web
-- Coordenadas
-- Score
-- Nivel
-- Problemas detectados
-- Redes sociales
-- WordPress
-- Elementor
-- WooCommerce
-- Responsive
-- SSL
-- Estado de la web
-- Tiempo de carga
+---
 
-El CSV se genera con separador compatible con Excel y codificacion preparada para caracteres en espanol.
+# Exportación CSV
 
-## Base de Datos
+La aplicación permite exportar resultados compatibles con Excel incluyendo:
 
-MySQL es opcional, pero recomendado para conservar resultados entre sesiones.
+* Nombre
+* Categoría
+* Dirección
+* Teléfono
+* Email
+* Web
+* Coordenadas
+* Score
+* Nivel
+* Problemas detectados
+* Redes sociales
+* SSL
+* Responsive
+* WordPress
+* Elementor
+* WooCommerce
+* Estado de la web
+* Tiempo de carga
 
-La base de datos por defecto es:
+---
+
+# Base de datos
+
+La persistencia MySQL es opcional pero recomendada.
+
+## Base de datos por defecto
 
 ```text
 lead_gen_tool
 ```
 
-El schema inicial se encuentra en:
+## Schema SQL
 
 ```text
 database/schema.sql
 ```
 
-La aplicacion tambien mantiene cache local en `storage/cache/` para evitar repetir llamadas a Overpass y analisis de webs continuamente.
+La aplicación también utiliza:
 
-## Seguridad
+```text
+storage/cache/
+```
 
-Medidas incluidas:
+para reducir llamadas repetidas a Overpass API y optimizar auditorías.
 
-- Variables sensibles fuera del repositorio mediante `.env`.
-- `.env` y variantes locales ignoradas por Git.
-- Cache, logs y archivos de debug excluidos del repositorio.
-- Inputs validados y salida HTML escapada.
-- Timeouts cortos para peticiones externas.
-- No se inventan webs cuando no hay una fuente fiable.
-- Validacion basica de coincidencia entre nombre del negocio y dominio.
-- Uso de Overpass API como fuente gratuita y publica.
+---
 
-Importante: si alguna clave real fue subida antes al historial de Git, debe rotarse o eliminarse del historial antes de publicar el repositorio de forma publica.
+# Seguridad
 
-## Mejoras Futuras
+## Medidas implementadas
 
-- Integrar una fuente gratuita adicional para enriquecer telefonos, emails y redes sin scraping agresivo.
-- Mejorar la deteccion de negocios cerrados permanentemente con fuentes complementarias.
-- Anadir panel de detalle por negocio.
-- Guardar auditorias historicas por fecha.
-- Anadir autenticacion basica para uso interno.
-- Crear informes PDF de auditoria por lead.
-- Mejorar el sistema de scoring con pesos configurables.
-- Ampliar el mapa interno de codigos postales.
-- Anadir pruebas automatizadas para normalizacion, deduplicacion y scoring.
+* Variables sensibles fuera del repositorio mediante `.env`
+* `.gitignore` configurado correctamente
+* Cache y debug excluidos del repositorio
+* Validación de inputs
+* Salida HTML escapada
+* Timeouts cortos para peticiones externas
+* Validación básica de coincidencia entre negocio y dominio
+* No se inventan webs sin fuentes fiables
 
-## Autor
+---
 
-Proyecto desarrollado por Jose Joaquin Rodriguez como herramienta de generacion de leads locales y auditoria digital.
+# Mejoras futuras
+
+* Panel detallado por negocio
+* Informes PDF de auditoría
+* Autenticación de usuarios
+* Historial de auditorías
+* Integración con APIs adicionales
+* Mapa interactivo de negocios
+* Configuración avanzada de scoring
+* Tests automatizados
+* Automatización de análisis periódicos
+
+---
+
+# Autor
+
+Proyecto desarrollado como herramienta de generación de leads locales y auditoría digital enfocada en detectar oportunidades comerciales mediante análisis de presencia online.
+
+### Stack principal
+
+* PHP Native
+* Docker
+* MySQL
+* OpenStreetMap / Overpass API
+* Dashboard SaaS UI
+* Auditoría digital automatizada
+
