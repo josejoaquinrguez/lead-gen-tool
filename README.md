@@ -10,19 +10,19 @@ La herramienta no solo lista negocios: identifica automáticamente webs mejorabl
 
 # Características destacadas
 
-✅ Búsqueda de negocios por código postal y nicho
-✅ Integración con OpenStreetMap / Overpass API
-✅ Detección automática de webs mejorables
-✅ Validación de dominios para reducir falsos positivos
-✅ Dashboard SaaS responsive
-✅ Sistema de scoring comercial inteligente
-✅ Exportación CSV compatible con Excel
-✅ Docker + MySQL + phpMyAdmin
-✅ Cache local para optimización de consultas
-✅ Modo claro y oscuro
-✅ Análisis básico de presencia digital
-✅ Detección de WordPress, Elementor y WooCommerce
-✅ Filtros inteligentes por oportunidad comercial
+* Búsqueda de negocios por código postal y nicho
+* Integración con OpenStreetMap / Overpass API
+* Detección automática de webs mejorables
+* Validación de dominios para reducir falsos positivos
+* Dashboard SaaS responsive
+* Sistema de scoring comercial inteligente
+* Exportación CSV compatible con Excel
+* Docker + MySQL + phpMyAdmin
+* Cache local para optimización de consultas
+* Modo claro y oscuro
+* Análisis básico de presencia digital
+* Detección de WordPress, Elementor y WooCommerce
+* Filtros inteligentes por oportunidad comercial
 
 ---
 
