@@ -1,245 +1,284 @@
 <?php
 
-function normalizeKeyword(string $keyword): string
+set_time_limit(120);
+
+require_once __DIR__ . '/utils.php';
+
+function getPlaces(string $keyword, string $postalCode, bool $forceRefresh = false): array
 {
-    $keyword = strtolower(trim($keyword));
+    $postalCode = trim($postalCode);
+    $keyword = trim($keyword);
 
-    $replacements = [
-        'á' => 'a',
-        'é' => 'e',
-        'í' => 'i',
-        'ó' => 'o',
-        'ú' => 'u',
-        'ñ' => 'n'
-    ];
+    if ($postalCode === '' || $keyword === '') {
+        return ['results' => [], 'error' => 'Introduce codigo postal y nicho.'];
+    }
 
-    return strtr($keyword, $replacements);
+    $coords = getPostalCodeCoordinates($postalCode);
+
+    if ($coords === null) {
+        return ['results' => [], 'error' => 'Codigo postal no configurado. Anade sus coordenadas en services/utils.php.'];
+    }
+
+    if (!$forceRefresh) {
+        $cached = readCache($postalCode, $keyword);
+
+        if ($cached !== null) {
+            return ['results' => $cached, 'error' => '', 'cached' => true];
+        }
+    }
+
+    $category = getCategoryForKeyword($keyword);
+    $query = buildOverpassQuery($coords['lat'], $coords['lon'], $category['filters']);
+    $response = callOverpass($query);
+
+    if ($response['error'] !== '') {
+        return ['results' => [], 'error' => $response['error']];
+    }
+
+    $data = json_decode($response['body'], true);
+
+    if (empty($data['elements']) || !is_array($data['elements'])) {
+        writeCache($postalCode, $keyword, []);
+        return ['results' => [], 'error' => 'Overpass no devolvio negocios para esta busqueda.'];
+    }
+
+    $results = parseOverpassElements($data['elements'], $postalCode, $coords['city'], $category['label'], $category['key']);
+    $results = dedupeBusinesses($results);
+    writeCache($postalCode, $keyword, $results);
+
+    return ['results' => $results, 'error' => '', 'cached' => false];
 }
 
-function getCategoryFilters(string $keyword): array
+function buildOverpassQuery(float $lat, float $lon, array $filters): string
 {
-    $keyword = normalizeKeyword($keyword);
+    $parts = [];
 
-    $categoryMap = [
+    foreach ($filters as $filter) {
+        foreach (['node', 'way', 'relation'] as $type) {
+            $parts[] = sprintf('%s(around:%d,%F,%F)%s;', $type, LEADGEN_RADIUS_METERS, $lat, $lon, $filter);
+        }
+    }
 
-        'restaurantes' => [
-            '["amenity"="restaurant"]',
-            '["amenity"="fast_food"]',
-            '["amenity"="cafe"]',
-            '["amenity"="bar"]'
-        ],
+    return "[out:json][timeout:35];\n(\n" . implode("\n", $parts) . "\n);\nout center tags;";
+}
 
-        'restaurante' => [
-            '["amenity"="restaurant"]',
-            '["amenity"="fast_food"]',
-            '["amenity"="cafe"]',
-            '["amenity"="bar"]'
-        ],
+function callOverpass(string $query): array
+{
+    $debugDir = __DIR__ . '/../storage/debug';
 
-        'inmobiliarias' => [
-            '["office"="estate_agent"]',
-            '["shop"]',
-            '["office"]',
-            '["name"~"inmobiliaria", i]',
-            '["name"~"real estate", i]'
-        ],
+    if (!is_dir($debugDir)) {
+        mkdir($debugDir, 0777, true);
+    }
 
-        'inmobiliaria' => [
-            '["office"="estate_agent"]',
-            '["shop"]',
-            '["office"]',
-            '["name"~"inmobiliaria", i]',
-            '["name"~"real estate", i]'
-        ],
+    file_put_contents($debugDir . '/last_query.txt', $query);
 
-        'clinicas esteticas' => [
-            '["shop"="beauty"]',
-            '["healthcare"="clinic"]',
-            '["amenity"="clinic"]'
-        ],
-
-        'clinica estetica' => [
-            '["shop"="beauty"]',
-            '["healthcare"="clinic"]',
-            '["amenity"="clinic"]'
-        ],
-
-        'peluquerias' => [
-            '["shop"="hairdresser"]'
-        ],
-
-        'peluqueria' => [
-            '["shop"="hairdresser"]'
-        ],
-
-        'dentistas' => [
-            '["amenity"="dentist"]',
-            '["healthcare"="dentist"]'
-        ],
-
-        'dentista' => [
-            '["amenity"="dentist"]',
-            '["healthcare"="dentist"]'
-        ],
-
-        'hoteles' => [
-            '["tourism"="hotel"]',
-            '["tourism"="guest_house"]'
-        ],
-
-        'hotel' => [
-            '["tourism"="hotel"]',
-            '["tourism"="guest_house"]'
-        ],
+    $endpoints = [
+        'https://overpass-api.de/api/interpreter',
+        'https://overpass.kumi.systems/api/interpreter',
+        'https://overpass.openstreetmap.ru/api/interpreter',
     ];
 
-    return $categoryMap[$keyword] ?? [
-        '["name"~"' . preg_quote($keyword, '/') . '", i]'
+    $lastStatus = 0;
+    $lastBody = '';
+    $lastError = '';
+
+    foreach ($endpoints as $endpoint) {
+        $ch = curl_init();
+
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $endpoint,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query(['data' => $query]),
+            CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+            CURLOPT_TIMEOUT => 45,
+            CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_USERAGENT => 'LeadGenTool/1.0',
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+        ]);
+
+        $body = curl_exec($ch);
+        $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+
+        $lastStatus = $status;
+        $lastBody = $body ?: '';
+        $lastError = $error ?: '';
+
+        if ($status === 200 && $body && str_starts_with(trim($body), '{')) {
+            file_put_contents($debugDir . '/raw_response.txt', $body);
+            file_put_contents($debugDir . '/http_status.txt', (string) $status);
+            return ['body' => $body, 'error' => ''];
+        }
+    }
+
+    file_put_contents($debugDir . '/raw_response.txt', $lastBody);
+    file_put_contents($debugDir . '/http_status.txt', (string) $lastStatus);
+
+    return [
+        'body' => '',
+        'error' => 'Overpass no esta respondiendo ahora mismo. Prueba de nuevo o usa force=1 mas tarde. ' . $lastError,
     ];
+}
+
+function parseOverpassElements(array $elements, string $postalCode, string $expectedCity, string $category, string $categoryKey): array
+{
+    $results = [];
+
+    foreach ($elements as $element) {
+        $tags = $element['tags'] ?? [];
+        $name = firstTag($tags, ['name', 'official_name', 'brand']);
+
+        if ($name === '') {
+            continue;
+        }
+
+        if (isClosedBusiness($tags) || isBlockedLargeBrand($name) || !businessMatchesCategory($name, $tags, $categoryKey)) {
+            continue;
+        }
+
+        $lat = $element['lat'] ?? $element['center']['lat'] ?? null;
+        $lon = $element['lon'] ?? $element['center']['lon'] ?? null;
+        $city = firstTag($tags, ['addr:city', 'addr:town', 'addr:village', 'is_in:city']);
+        $cityNormalized = normalizeText($city);
+
+        if ($cityNormalized !== '' && $expectedCity !== '' && !str_contains($cityNormalized, normalizeText($expectedCity))) {
+            continue;
+        }
+
+        $websiteSelection = chooseOfficialWebsite(collectTags($tags, [
+            'contact:website',
+            'website',
+            'official_website',
+            'brand:website',
+            'operator:website',
+            'contact:url',
+            'url',
+        ]), $name);
+
+        $results[] = [
+            'name' => $name,
+            'category' => $category,
+            'address' => buildAddress($tags),
+            'city' => $city !== '' ? $city : $expectedCity,
+            'postal_code' => firstTag($tags, ['addr:postcode']) ?: $postalCode,
+            'phone' => normalizePhone(firstTag($tags, ['phone', 'contact:phone', 'mobile', 'contact:mobile'])),
+            'email' => normalizeEmailCandidate(firstTag($tags, ['email', 'contact:email'])),
+            'website' => $websiteSelection['website'],
+            'website_is_doubtful' => $websiteSelection['is_doubtful'],
+            'discarded_website' => $websiteSelection['discarded_website'],
+            'instagram' => normalizeSocialProfile(firstTag($tags, ['contact:instagram', 'instagram', 'social:instagram']), 'instagram'),
+            'facebook' => normalizeSocialProfile(firstTag($tags, ['contact:facebook', 'facebook', 'social:facebook']), 'facebook'),
+            'latitude' => $lat,
+            'longitude' => $lon,
+            'source' => 'OpenStreetMap',
+        ];
+    }
+
+    return array_values(array_filter($results, fn ($item) => $item['name'] !== ''));
+}
+
+function firstTag(array $tags, array $keys): string
+{
+    foreach ($keys as $key) {
+        if (!empty($tags[$key])) {
+            return trim((string) $tags[$key]);
+        }
+    }
+
+    return '';
+}
+
+function collectTags(array $tags, array $keys): array
+{
+    $values = [];
+
+    foreach ($keys as $key) {
+        if (!empty($tags[$key])) {
+            $values[] = trim((string) $tags[$key]);
+        }
+    }
+
+    return $values;
 }
 
 function buildAddress(array $tags): string
 {
-    $parts = [];
-
-    if (!empty($tags['addr:street'])) {
-        $parts[] = $tags['addr:street'];
+    if (!empty($tags['addr:full'])) {
+        return trim($tags['addr:full']);
     }
 
-    if (!empty($tags['addr:housenumber'])) {
-        $parts[] = $tags['addr:housenumber'];
-    }
-
-    if (!empty($tags['addr:city'])) {
-        $parts[] = $tags['addr:city'];
-    }
-
-    if (!empty($tags['addr:postcode'])) {
-        $parts[] = $tags['addr:postcode'];
-    }
-
-    return !empty($parts)
-        ? implode(', ', $parts)
-        : 'Dirección no disponible';
-}
-
-function getPlaces($keyword, $postal): array
-{
-    $cpMap = [
-        "29600" => ["lat" => 36.510, "lon" => -4.885], // Marbella
-        "41630" => ["lat" => 37.353, "lon" => -5.222], // La Lantejuela
-    ];
-
-    if (!isset($cpMap[$postal])) {
-        return [];
-    }
-
-    $lat = $cpMap[$postal]["lat"];
-    $lon = $cpMap[$postal]["lon"];
-
-    $radius = 5000;
-
-    $filters = getCategoryFilters($keyword);
-
-    $queryParts = [];
-
-    foreach ($filters as $filter) {
-
-        $queryParts[] =
-            'node(around:' . $radius . ',' . $lat . ',' . $lon . ')' . $filter . ';';
-
-        $queryParts[] =
-            'way(around:' . $radius . ',' . $lat . ',' . $lon . ')' . $filter . ';';
-
-        $queryParts[] =
-            'relation(around:' . $radius . ',' . $lat . ',' . $lon . ')' . $filter . ';';
-    }
-
-    $query = '
-    [out:json][timeout:25];
-
-    (
-        ' . implode("\n", $queryParts) . '
-    );
-
-    out center tags;
-    ';
-
-    $url = "https://overpass-api.de/api/interpreter?data=" . urlencode($query);
-
-    $ch = curl_init();
-
-    curl_setopt_array($ch, [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 20,
-        CURLOPT_CONNECTTIMEOUT => 5,
-        CURLOPT_USERAGENT => 'LeadGenTool/1.0',
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_SSL_VERIFYHOST => false,
+    $street = trim(($tags['addr:street'] ?? '') . ' ' . ($tags['addr:housenumber'] ?? ''));
+    $parts = array_filter([
+        $street,
+        $tags['addr:postcode'] ?? '',
+        $tags['addr:city'] ?? '',
     ]);
 
-    $response = curl_exec($ch);
-    $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    return implode(', ', $parts);
+}
 
-    if (!$response || $statusCode !== 200) {
-        return [];
+function normalizeSocialProfile(string $value, string $network): string
+{
+    $value = trim($value);
+
+    if ($value === '') {
+        return '';
     }
 
-    $data = json_decode($response, true);
+    if ($network === 'instagram') {
+        if (str_starts_with($value, 'http://') || str_starts_with($value, 'https://')) {
+            $path = trim(parse_url($value, PHP_URL_PATH) ?? '', '/');
+            $handle = explode('/', $path)[0] ?? '';
+        } else {
+            $handle = ltrim($value, '@');
+        }
 
-    if (!isset($data["elements"])) {
-        return [];
+        $blocked = ['', 'p', 'reel', 'reels', 'stories', 'explore', 'accounts'];
+
+        if (in_array(strtolower($handle), $blocked, true) || !preg_match('/^[a-zA-Z0-9._]{3,30}$/', $handle)) {
+            return '';
+        }
+
+        return 'https://www.instagram.com/' . $handle . '/';
     }
 
-    $results = [];
-
-    foreach ($data["elements"] as $el) {
-
-        $tags = $el["tags"] ?? [];
-
-        $latResult =
-            $el["lat"]
-            ?? $el["center"]["lat"]
-            ?? null;
-
-        $lonResult =
-            $el["lon"]
-            ?? $el["center"]["lon"]
-            ?? null;
-
-        $website =
-            $tags["website"]
-            ?? $tags["contact:website"]
-            ?? $tags["url"]
-            ?? "";
-
-        $phone =
-            $tags["phone"]
-            ?? $tags["contact:phone"]
-            ?? "";
-
-        $instagram =
-            $tags["contact:instagram"]
-            ?? $tags["instagram"]
-            ?? "";
-
-        $facebook =
-            $tags["contact:facebook"]
-            ?? $tags["facebook"]
-            ?? "";
-
-        $results[] = [
-            "name" => $tags["name"] ?? "Sin nombre",
-            "address" => buildAddress($tags),
-            "phone" => $phone,
-            "website" => $website,
-            "instagram" => $instagram,
-            "facebook" => $facebook,
-            "latitude" => $latResult,
-            "longitude" => $lonResult,
-        ];
+    if ($network === 'facebook') {
+        return str_starts_with($value, 'http') ? $value : 'https://www.facebook.com/' . ltrim($value, '@');
     }
 
-    return $results;
+    return '';
+}
+
+function dedupeBusinesses(array $businesses): array
+{
+    $unique = [];
+
+    foreach ($businesses as $business) {
+        $nameKey = normalizeText($business['name']);
+        $addressKey = normalizeText($business['address'] ?? '');
+        $lat = $business['latitude'] !== null ? round((float) $business['latitude'], 4) : '';
+        $lon = $business['longitude'] !== null ? round((float) $business['longitude'], 4) : '';
+        $key = $nameKey . '|' . ($addressKey ?: $lat . ',' . $lon);
+
+        if (!isset($unique[$key]) || dataQuality($business) > dataQuality($unique[$key])) {
+            $unique[$key] = $business;
+        }
+    }
+
+    return array_values($unique);
+}
+
+function dataQuality(array $business): int
+{
+    $score = 0;
+
+    foreach (['website', 'phone', 'email', 'address', 'instagram', 'facebook'] as $field) {
+        if (!empty($business[$field])) {
+            $score++;
+        }
+    }
+
+    return $score;
 }

@@ -1,0 +1,16 @@
+[out:json][timeout:35];
+(
+node(around:12000,36.510071,-4.882447)["amenity"="restaurant"];
+way(around:12000,36.510071,-4.882447)["amenity"="restaurant"];
+relation(around:12000,36.510071,-4.882447)["amenity"="restaurant"];
+node(around:12000,36.510071,-4.882447)["amenity"="cafe"];
+way(around:12000,36.510071,-4.882447)["amenity"="cafe"];
+relation(around:12000,36.510071,-4.882447)["amenity"="cafe"];
+node(around:12000,36.510071,-4.882447)["amenity"="bar"];
+way(around:12000,36.510071,-4.882447)["amenity"="bar"];
+relation(around:12000,36.510071,-4.882447)["amenity"="bar"];
+node(around:12000,36.510071,-4.882447)["amenity"="fast_food"];
+way(around:12000,36.510071,-4.882447)["amenity"="fast_food"];
+relation(around:12000,36.510071,-4.882447)["amenity"="fast_food"];
+);
+out center tags;

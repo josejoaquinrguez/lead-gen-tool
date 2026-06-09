@@ -1,0 +1,1 @@
+https://nominatim.openstreetmap.org/search?q=29600%2C+M%C3%A1laga%2C+Andaluc%C3%ADa%2C+Espa%C3%B1a&format=json&addressdetails=1&limit=1&countrycodes=es

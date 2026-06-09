@@ -1,0 +1,1071 @@
+{
+    "marbella club hotel|marbella|29600": {
+        "website": "https:\/\/www.marbellaclub.com",
+        "website_found": true,
+        "phone": "+34 952 822 211",
+        "email": "hotel@marbellaclub.com",
+        "instagram": "https:\/\/www.instagram.com\/marbellaclubh\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:39:06",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.marbellaclub.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hotel senator marbella spa|marbella|29600": {
+        "website": "https:\/\/www.senatorhr.com\/senator-marbella-spa-hotel\/spa-marbella",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:52:51",
+        "audit": {
+            "checked": true,
+            "reachable": false,
+            "http_status": 200,
+            "final_url": "https:\/\/www.senatorhr.com\/senator-marbella-spa-hotel\/spa-marbella\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Web no carga"
+        ]
+    },
+    "hotel thailandia|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:39:30",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "nh hoteles|marbella|29600": {
+        "website": "https:\/\/www.hoteles.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:39:43",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/ww2.affinity.net\/fly?no_capp=2&enk=MTU1NTQ5fDEyM3wxfDk5NzY5NnwxNzgwOTE1MTg1fDF8MXw2MHwx&ls=1780915185.5705&lbc=1780915185.5748&lac=1780915185.6078",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "No responsive",
+            "Sin WhatsApp",
+            "Sin CTA",
+            "Sin favicon"
+        ]
+    },
+    "puente romano|marbella|29600": {
+        "website": "https:\/\/www.puenteromano.com",
+        "website_found": true,
+        "phone": "+34 682 112 233",
+        "email": "comunicacion@celicioso.com",
+        "instagram": "https:\/\/www.instagram.com\/puenteromanoresort\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:39:45",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.puenteromano.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "puente romano marbella|marbella|29600": {
+        "website": "https:\/\/www.puenteromanomarbella.com",
+        "website_found": true,
+        "phone": "+34 951 204 417",
+        "email": "info@puenteromanomarbella.com",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "https:\/\/wa.me\/34629617976",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:39:47",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.puenteromanomarbella.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": true,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin CTA"
+        ]
+    },
+    "hotel río real golf|marbella|29600": {
+        "website": "https:\/\/rioreal.com",
+        "website_found": true,
+        "phone": "+34 952 765 732",
+        "email": "reservas@rioreal.com",
+        "instagram": "https:\/\/www.instagram.com\/golf_rioreal\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:40:06",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/rioreal.com\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": true,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": true,
+            "has_form": true,
+            "has_cta": true,
+            "has_favicon": true
+        },
+        "website_issues": []
+    },
+    "the town house marbella|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:41:03",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "the old house|marbella|29600": {
+        "website": "https:\/\/www.csesingularstays.com",
+        "website_found": true,
+        "phone": "+34 637 854 104",
+        "email": "reservas@csesingularstays.com",
+        "instagram": "https:\/\/www.instagram.com\/cse_holidayapartments\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:41:37",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.csesingularstays.com\/es\/home",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "nobu|marbella|29600": {
+        "website": "https:\/\/www.puenteromano.com",
+        "website_found": true,
+        "phone": "+34 682 112 233",
+        "email": "comunicacion@celicioso.com",
+        "instagram": "https:\/\/www.instagram.com\/puenteromanoresort\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:42:09",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.puenteromano.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hapimag marbella|marbella|29600": {
+        "website": "https:\/\/www.hapimag.com",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:42:10",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.hapimag.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "albergue juvenil marbella|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 7,
+        "checked_at": "2026-06-08 10:42:59",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "aparthotel puerto azul|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:43:24",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "beach club|marbella|29600": {
+        "website": "https:\/\/www.granmarbellaresort.com",
+        "website_found": true,
+        "phone": "+34 951 053 970",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/granmarbellaresort\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:44:17",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.granmarbellaresort.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "oasis club|marbella|29600": {
+        "website": "https:\/\/www.oasisclub.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/nativadisco\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:44:22",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/nativaclub.es\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "hotel sultán|marbella|29600": {
+        "website": "https:\/\/www.hotelsultanclubtgs.com",
+        "website_found": true,
+        "phone": "+34 951 204 417",
+        "email": "info@hotelsultanclubtgs.com",
+        "instagram": "https:\/\/www.instagram.com\/alpcourchevel\/",
+        "facebook": "",
+        "whatsapp": "https:\/\/wa.me\/34629617976",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:45:06",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.hotelsultanclubtgs.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": true,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "guadalpin|marbella|29600": {
+        "website": "https:\/\/www.guadalpin.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/iesguadalpin\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:45:14",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.guadalpin.es\/es\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hotel el fuerte|marbella|29600": {
+        "website": "https:\/\/www.elfuerte.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:45:33",
+        "audit": {
+            "checked": true,
+            "reachable": false,
+            "http_status": 301,
+            "final_url": "https:\/\/elfuerte.es\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Web no carga"
+        ]
+    },
+    "el faro|marbella|29600": {
+        "website": "https:\/\/www.elfaro.com",
+        "website_found": true,
+        "phone": "+34 846 149 934",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/five.star.property.usa\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:45:46",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.fivestarproperty.com\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "No responsive",
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hotel lima|marbella|29600": {
+        "website": "https:\/\/www.lima-marbella.com",
+        "website_found": true,
+        "phone": "+34 682 847 730",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/lima_marbella\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:46:05",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/lima-marbella.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": true,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin CTA",
+            "Sin favicon"
+        ]
+    },
+    "club med magna marbella|marbella|29600": {
+        "website": "https:\/\/www.clubmed.us\/r\/magna-marbella\/y",
+        "website_found": true,
+        "phone": "+34 804 432 004",
+        "email": "",
+        "instagram": "https:\/\/www.instagram.com\/clubmed\/",
+        "facebook": "",
+        "whatsapp": "https:\/\/wa.me\/14804432004",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:46:41",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.clubmed.us\/r\/magna-marbella\/y",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": true,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "hotel villa san fransisco|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:48:29",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "hostal el castillo|marbella|29600": {
+        "website": "https:\/\/www.hostalelcastillo.com",
+        "website_found": true,
+        "phone": "",
+        "email": "info@hostalelcastillo.com",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:48:30",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.hostalelcastillo.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "No responsive",
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hotel don alfredo|marbella|29600": {
+        "website": "https:\/\/www.donalfredo.es",
+        "website_found": true,
+        "phone": "+34 675 945 769",
+        "email": "statafactory@gmail.com",
+        "instagram": "https:\/\/www.instagram.com\/donalfredocastelldefels\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:48:35",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/donalfredo.es\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": true,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": true,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin formulario",
+            "Sin CTA"
+        ]
+    },
+    "hotel el rodeo|marbella|29600": {
+        "website": "https:\/\/www.elrodeo.com",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:48:41",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/elrodeo.com\/",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin formulario",
+            "Sin CTA",
+            "Sin favicon"
+        ]
+    },
+    "hotel finlandia|marbella|29600": {
+        "website": "https:\/\/www.hotelfinlandia.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:49:22",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.hotelfinlandia.es\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": true,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": true,
+            "has_form": true,
+            "has_cta": true,
+            "has_favicon": true
+        },
+        "website_issues": []
+    },
+    "la pilarica|marbella|29600": {
+        "website": "https:\/\/www.pilarica.es",
+        "website_found": true,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:50:21",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/pilarica.es\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hostal tak|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:50:45",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "hostal san ramón|marbella|29600": {
+        "website": "https:\/\/www.hostalsanramon.com",
+        "website_found": true,
+        "phone": "+34 952 773 582",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:50:48",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.hostalsanramon.com\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hostal berlín|marbella|29600": {
+        "website": "https:\/\/www.hostalberlin.es",
+        "website_found": true,
+        "phone": "",
+        "email": "sales@nicsell.com",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:50:55",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/nicsell.com\/en\/domain\/www.hostalberlin.es",
+            "ssl": true,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": true,
+            "has_instagram": false,
+            "has_whatsapp": true,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin CTA"
+        ]
+    },
+    "pensión juan|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:51:21",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "hostal la luna|marbella|29600": {
+        "website": "https:\/\/www.laluna.com",
+        "website_found": true,
+        "phone": "",
+        "email": "info@laluna.com",
+        "instagram": "https:\/\/www.instagram.com\/lalunagrenada\/",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:52:04",
+        "audit": {
+            "checked": true,
+            "reachable": true,
+            "http_status": 200,
+            "final_url": "https:\/\/www.laluna.com\/",
+            "ssl": true,
+            "wordpress": true,
+            "elementor": true,
+            "responsive": true,
+            "has_instagram": true,
+            "has_whatsapp": false,
+            "has_form": true,
+            "has_cta": false,
+            "has_favicon": true
+        },
+        "website_issues": [
+            "Sin WhatsApp",
+            "Sin CTA"
+        ]
+    },
+    "hotel baviera|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:52:51",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "ona princesa playa|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "+34 951 127 529",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:53:38",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "hotel nh marbella|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "+34 952 763 200",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:54:58",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    },
+    "ona marbella inn|marbella|29600": {
+        "website": "",
+        "website_found": false,
+        "phone": "+34 951 550 300",
+        "email": "",
+        "instagram": "",
+        "facebook": "",
+        "whatsapp": "",
+        "search_version": 8,
+        "checked_at": "2026-06-08 10:55:21",
+        "audit": {
+            "checked": false,
+            "reachable": false,
+            "http_status": 0,
+            "final_url": "",
+            "ssl": false,
+            "wordpress": false,
+            "elementor": false,
+            "responsive": false,
+            "has_instagram": false,
+            "has_whatsapp": false,
+            "has_form": false,
+            "has_cta": false,
+            "has_favicon": false
+        },
+        "website_issues": [
+            "Sin web validada"
+        ]
+    }
+}

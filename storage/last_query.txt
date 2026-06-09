@@ -1,0 +1,14 @@
+
+    [out:json][timeout:40];
+
+    (
+        node(around:5000,36.510071,-4.882447)["amenity"="restaurant"];
+way(around:5000,36.510071,-4.882447)["amenity"="restaurant"];
+node(around:5000,36.510071,-4.882447)["amenity"="fast_food"];
+way(around:5000,36.510071,-4.882447)["amenity"="fast_food"];
+node(around:5000,36.510071,-4.882447)["amenity"="cafe"];
+way(around:5000,36.510071,-4.882447)["amenity"="cafe"];
+    );
+
+    out center tags;
+    

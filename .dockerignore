@@ -1,0 +1,7 @@
+.git
+.gitignore
+storage/cache/*
+storage/debug/*
+storage/*.txt
+storage/*.json
+*.log
