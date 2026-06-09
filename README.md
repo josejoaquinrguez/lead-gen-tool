@@ -293,6 +293,7 @@ para reducir llamadas repetidas a Overpass API y optimizar auditorías.
 
 # Autor
 
+Jose Joaquín Rodríguez y Jesús Cornejo Romero
 Proyecto desarrollado como herramienta de generación de leads locales y auditoría digital enfocada en detectar oportunidades comerciales mediante análisis de presencia online.
 
 ### Stack principal
