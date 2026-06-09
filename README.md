@@ -8,15 +8,6 @@ La herramienta no solo lista negocios: identifica automáticamente webs mejorabl
 
 ---
 
-![PHP](https://img.shields.io/badge/PHP-8.2-blue)
-![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
-![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
-![OpenStreetMap](https://img.shields.io/badge/OpenStreetMap-Overpass-success)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![UI](https://img.shields.io/badge/UI-SaaS%20Dashboard-purple)
-
----
-
 # Características destacadas
 
 ✅ Búsqueda de negocios por código postal y nicho
@@ -32,22 +23,6 @@ La herramienta no solo lista negocios: identifica automáticamente webs mejorabl
 ✅ Análisis básico de presencia digital
 ✅ Detección de WordPress, Elementor y WooCommerce
 ✅ Filtros inteligentes por oportunidad comercial
-
----
-
-# Demo visual
-
-## Dashboard oscuro
-
-```md
-![Dashboard oscuro](docs/screenshots/dashboard-dark.png)
-```
-
-## Dashboard claro
-
-```md
-![Dashboard claro](docs/screenshots/dashboard-light.png)
-```
 
 ---
 
