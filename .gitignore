@@ -1,0 +1,36 @@
+# Environment and secrets
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Runtime storage
+storage/cache/*
+storage/cache/websites/*
+storage/debug/*
+storage/*.txt
+storage/*.json
+storage/*.log
+
+# Keep storage folders available
+!storage/.gitkeep
+!storage/cache/.gitkeep
+!storage/cache/websites/
+!storage/cache/websites/.gitkeep
+!storage/debug/.gitkeep
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.cache
+
+# Docker/local database artifacts
+mysql_data/
+*.sql.gz
+*.dump

@@ -1,7 +1,0 @@
-enabled=true
-host=mysql
-port=3306
-database=lead_gen_tool
-username=root
-sapi=apache2handler
-dockerenv=true

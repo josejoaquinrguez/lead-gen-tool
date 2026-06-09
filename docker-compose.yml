@@ -7,21 +7,22 @@ services:
     ports:
       - "8000:80"
     environment:
-      DB_ENABLED: "true"
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_DATABASE: lead_gen_tool
-      DB_USERNAME: root
-      DB_PASSWORD: root
-      DB_CHARSET: utf8mb4
       APP_DOCKER: "true"
+      DB_ENABLED: ${DB_ENABLED:?Set DB_ENABLED in .env}
+      DB_HOST: ${DB_HOST:?Set DB_HOST in .env}
+      DB_PORT: ${DB_PORT:?Set DB_PORT in .env}
+      DB_DATABASE: ${DB_DATABASE:?Set DB_DATABASE in .env}
+      DB_USERNAME: ${DB_USERNAME:?Set DB_USERNAME in .env}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DB_CHARSET: ${DB_CHARSET:-utf8mb4}
+      OVERPASS_API_URL: ${OVERPASS_API_URL:-https://overpass-api.de/api/interpreter}
     volumes:
       - .:/var/www/html
       - ./storage:/var/www/html/storage
     command: >
       bash -lc "mkdir -p storage/cache storage/cache/websites storage/debug
       && chown -R www-data:www-data storage
-      && printf 'SetEnv APP_DOCKER true\nSetEnv DB_ENABLED true\nSetEnv DB_HOST mysql\nSetEnv DB_PORT 3306\nSetEnv DB_DATABASE lead_gen_tool\nSetEnv DB_USERNAME root\nSetEnv DB_PASSWORD root\nSetEnv DB_CHARSET utf8mb4\n' > /etc/apache2/conf-enabled/leadgen-env.conf
+      && printf 'SetEnv APP_DOCKER true\nSetEnv DB_ENABLED %s\nSetEnv DB_HOST %s\nSetEnv DB_PORT %s\nSetEnv DB_DATABASE %s\nSetEnv DB_USERNAME %s\nSetEnv DB_PASSWORD %s\nSetEnv DB_CHARSET %s\nSetEnv OVERPASS_API_URL %s\n' \"$$DB_ENABLED\" \"$$DB_HOST\" \"$$DB_PORT\" \"$$DB_DATABASE\" \"$$DB_USERNAME\" \"$$DB_PASSWORD\" \"$$DB_CHARSET\" \"$$OVERPASS_API_URL\" > /etc/apache2/conf-enabled/leadgen-env.conf
       && apache2-foreground"
     depends_on:
       mysql:
@@ -32,13 +33,13 @@ services:
     image: mysql:8.0
     container_name: lead_gen_tool_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: lead_gen_tool
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      MYSQL_DATABASE: ${DB_DATABASE:?Set DB_DATABASE in .env}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u$${DB_USERNAME:-root} -p$${MYSQL_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -52,7 +53,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
       UPLOAD_LIMIT: 64M
     depends_on:
       mysql:

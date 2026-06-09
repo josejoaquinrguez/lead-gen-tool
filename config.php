@@ -1,3 +1,5 @@
 <?php
 
-define('TAVILY_API_KEY', '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');
+require_once __DIR__ . '/config/env.php';
+
+define('TAVILY_API_KEY', (string) envValue('TAVILY_API_KEY', ''));

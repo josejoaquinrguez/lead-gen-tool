@@ -3,6 +3,7 @@
 set_time_limit(120);
 
 require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/../config/env.php';
 
 function getPlaces(string $keyword, string $postalCode, bool $forceRefresh = false): array
 {
@@ -72,11 +73,12 @@ function callOverpass(string $query): array
 
     file_put_contents($debugDir . '/last_query.txt', $query);
 
-    $endpoints = [
-        'https://overpass-api.de/api/interpreter',
+    $primaryEndpoint = (string) envValue('OVERPASS_API_URL', 'https://overpass-api.de/api/interpreter');
+    $endpoints = array_values(array_unique(array_filter([
+        $primaryEndpoint,
         'https://overpass.kumi.systems/api/interpreter',
         'https://overpass.openstreetmap.ru/api/interpreter',
-    ];
+    ])));
 
     $lastStatus = 0;
     $lastBody = '';

@@ -1,7 +1,12 @@
 .git
 .gitignore
+.env
+.env.local
+.env.production
+.env.*.local
 storage/cache/*
 storage/debug/*
 storage/*.txt
 storage/*.json
+storage/*.log
 *.log
